@@ -54,14 +54,14 @@ exports.getBookings = asyncHandler(async (req, res, next) => {
  */
 
 exports.deleteBooking = asyncHandler(async (req, res, next) => {
-  let Booking = await Booking.findById(req.params.id)
-  if (!Booking) {
+  let booking = await Booking.findById(req.params.id)
+  if (!booking) {
     return next(
       new ErrorResponse(`Booking not found of id ${req.params.id}`, 404)
     )
   }
 
-  Booking.remove()
+  booking.remove()
   res.status(201).json({
     success: true,
     data: {},
@@ -74,14 +74,14 @@ exports.deleteBooking = asyncHandler(async (req, res, next) => {
  * @access  Private
  */
 exports.getBooking = asyncHandler(async (req, res, next) => {
-  const Booking = await Booking.findById(req.params.id)
-  if (!Booking) {
+  const booking = await Booking.findById(req.params.id)
+  if (!booking) {
     return next(
       new ErrorResponse(`Booking not found of id ${req.params.id}`, 404)
     )
   }
   res.status(201).json({
     success: true,
-    data: Booking,
+    data: booking,
   })
 })
