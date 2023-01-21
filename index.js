@@ -18,7 +18,9 @@ mongoose
   .then((conn) => {
     console.log(`Mongoose Connected at: ${conn.connection.host}`)
   })
-
+app.use('/', () => {
+  res.send('App is running')
+})
 app.use('/api/v1/auth', auth)
 app.use('/api/v1/book', booking)
 
